@@ -1,5 +1,5 @@
 var myName = "Ayaz";
-if (myName = "ayaz")
+if (myName == "ayaz")
 {
     console.log("The entered input is Correct");
 }
