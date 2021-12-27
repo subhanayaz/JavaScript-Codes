@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Movie Ticket Booking Point</title>
+
+    <style>
+        div {
+            border: 2px solid;
+            padding: 20px;
+            width: fit-content;
+            margin: auto;
+        }
+
+        h1 {
+            color: rgb(0, 4, 255);
+        }
+    </style>
+
+</head>
+
+<script>
+    function book() {
+        var user = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        var pwd = user.substring(0, 3);
+
+        var pwds = pwd + "@123";
+
+        if (user == "") {
+            document.getElementById("response").innerHTML = "Fill the username please!";
+            document.getElementById("response").style.color = "red";
+            return false;
+        }
+
+        if (password == "") {
+            document.getElementById("response").innerHTML = "Fill the password please!";
+            document.getElementById("response").style.color = "red";
+            return false;
+        }
+
+        if (password == pwds) {
+            document.getElementById("response").innerHTML = "login sucessfull";
+            document.getElementById("response").style.color = "green";
+
+            var ticket = document.getElementById("class").value;
+            var nooftckt = document.querySelector('input[name="ticket"]:checked').value;
+            var amount = ticket * nooftckt;
+            var gst = (amount * 5) / 100;
+            var total = amount + gst;
+
+            document.getElementById("response").innerHTML = "Booking Sucessfull and the total amount is " + total;
+
+
+        }
+
+        else {
+            // alert(User + "login Failed")
+            document.getElementById("response").innerHTML = "Incorrect Username / Password";
+            document.getElementById("response").style.color = "red";
+        }
+
+    }
+
+    function calc() {
+
+        var ticket = document.getElementById("class").value;
+        var nooftckt = document.querySelector('input[name="ticket"]:checked').value;
+        var amount = ticket * nooftckt;
+        var gst = (amount * 5) / 100;
+        var total = amount + gst;
+
+        document.getElementById("response").innerHTML = "The amount to be Paid is " + total;
+        document.getElementById("response").style.color = "Green";
+    }
+</script>
+
+<body>
+    <div>
+        <h1>Movie Ticket Booking Point</h1>
+
+        <label for=""> User Name </label>
+        <input type="text" name="user name" id="username" placeholder="Enter User Name">
+
+        <br>
+        <br>
+
+        <label for=""> Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter Password">
+
+        <br>
+        <br>
+
+        <label for="">Class</label>
+        <select name="" id="class">
+            <option value="100">Silver</option>
+            <option value="150">Gold</option>
+            <option value="200">Diamond</option>
+            <option value="250">Platinum</option>
+        </select>
+        <label for="" id="response1"></label>
+
+        <br>
+        <br>
+
+        <label for="">No. of Tickets</label>
+        <input type="radio" value="1" name="ticket">1
+        <input type="radio" value="2" name="ticket">2
+        <input type="radio" value="3" name="ticket">3
+        <input type="radio" value="4" name="ticket">4
+        <input type="radio" value="5" name="ticket">5
+        <input type="radio" value="6" name="ticket">6
+        <br>
+        <br>
+
+        <button onclick="book()">book</button>
+
+        <button onclick="calc()">Calculate</button>
+
+        <br>
+        <br>
+        <label for="" id="response"></label>
+
+
+    </div>
+
+
+</body>
+
+</html>
